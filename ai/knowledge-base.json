@@ -1,0 +1,13 @@
+[
+  {
+    "componentName": "button",
+    "analysis": {
+      "props": [],
+      "variants": [],
+      "useWhen": "Análise pendente via IA",
+      "avoidWhen": "Análise pendente via IA",
+      "exampleUsage": "Análise pendente via IA"
+    },
+    "rawCodeSize": 2356
+  }
+]

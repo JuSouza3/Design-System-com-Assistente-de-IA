@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    /* Base */
+    "target": "ES2020",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "types": ["node"],
+    "strict": true,
+
+    /* Paths (mantive os seus, não atrapalham agora) */
+    "baseUrl": ".",
+    "paths": {
+      "@/lib/*": ["frontend/lib/*"],
+      "@/components/*": ["sample-project/components/*"]
+    },
+
+    /* Output / DX */
+    "sourceMap": true,
+    "skipLibCheck": true
+  }
+}
