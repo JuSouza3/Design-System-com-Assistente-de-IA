@@ -2,12 +2,55 @@
   {
     "componentName": "button",
     "analysis": {
-      "props": [],
-      "variants": [],
-      "useWhen": "Análise pendente via IA",
-      "avoidWhen": "Análise pendente via IA",
-      "exampleUsage": "Análise pendente via IA"
-    },
-    "rawCodeSize": 2356
+      "props": [
+        {
+          "name": "className",
+          "type": "string",
+          "description": "string"
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "description": "string"
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "description": "string"
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "description": "boolean"
+        }
+      ],
+      "variants": [
+        {
+          "name": "variant",
+          "values": [
+            "default",
+            "primary",
+            "outline",
+            "link",
+            "ghost"
+          ]
+        },
+        {
+          "name": "size",
+          "values": [
+            "default",
+            "sm",
+            "md",
+            "lg",
+            "icon",
+            "icon-sm",
+            "icon-lg"
+          ]
+        }
+      ],
+      "useWhen": "Quando um botão é necessário",
+      "avoidWhen": "Não usar quando um link é suficiente",
+      "exampleUsage": "<Button variant='primary' size='lg'>Botão primário</Button>"
+    }
   }
 ]
