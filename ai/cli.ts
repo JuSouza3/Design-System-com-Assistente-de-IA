@@ -3,100 +3,84 @@ import * as path from "path";
 
 const KB_PATH = path.resolve(__dirname, "./knowledge-base.json");
 
-type Prop = {
-  name: string;
-  type?: string;
-  description?: string;
-};
-
-type Variant = {
-  name: string;
-  values: string[];
-};
-
-type Analysis = {
-  componentName?: string;
-  props?: Prop[];
-  variants?: Variant[];
-  useWhen?: string;
-  avoidWhen?: string;
-  exampleUsage?: string;
-};
-
 type KnowledgeBaseItem = {
   componentName: string;
-  analysis: Analysis;
+  analysis: {
+    props?: { name: string; type: string; description?: string }[];
+    variants?: { name: string; values: string[] }[];
+    useWhen?: string;
+    avoidWhen?: string;
+    exampleUsage?: string;
+  };
 };
 
-function printComponent(component: KnowledgeBaseItem) {
-  const { componentName, analysis } = component;
-
-  console.log(`\n📦 Component: ${componentName}\n`);
-
-  if (analysis.props?.length) {
-    console.log("🔧 Props:");
-    analysis.props.forEach((prop) => {
-      console.log(
-        `- ${prop.name}${prop.type ? `: ${prop.type}` : ""}`
-      );
-    });
-    console.log("");
+function loadKnowledgeBase(): KnowledgeBaseItem[] {
+  if (!fs.existsSync(KB_PATH)) {
+    console.error("❌ knowledge-base.json não encontrado. Rode analyzeComponents.ts primeiro.");
+    process.exit(1);
   }
 
-  if (analysis.variants?.length) {
-    console.log("🎨 Variants:");
-    analysis.variants.forEach((variant) => {
-      console.log(
-        `- ${variant.name}: ${variant.values.join(" | ")}`
-      );
-    });
-    console.log("");
-  }
-
-  if (analysis.useWhen) {
-    console.log("✅ Use when:");
-    console.log(`- ${analysis.useWhen}\n`);
-  }
-
-  if (analysis.avoidWhen) {
-    console.log("⛔ Avoid when:");
-    console.log(`- ${analysis.avoidWhen}\n`);
-  }
-
-  if (analysis.exampleUsage) {
-    console.log("💡 Example:");
-    console.log(analysis.exampleUsage + "\n");
-  }
+  return JSON.parse(fs.readFileSync(KB_PATH, "utf-8"));
 }
 
-function run() {
-  const componentName = process.argv[2];
+function listComponents(kb: KnowledgeBaseItem[]) {
+  console.log("📋 Componentes disponíveis:\n");
+  kb.forEach(c => console.log("- " + c.componentName));
+}
 
-  if (!componentName) {
-    console.error("❌ Informe o nome do componente.");
-    console.error("Exemplo: npx ts-node ai/cli.ts Button");
-    process.exit(1);
+function showComponent(component: KnowledgeBaseItem) {
+  const { props, variants, useWhen, avoidWhen, exampleUsage } = component.analysis;
+
+  console.log(`\n📦 Component: ${component.componentName}\n`);
+
+  if (props?.length) {
+    console.log("🔧 Props:");
+    props.forEach(p => console.log(`- ${p.name}: ${p.type}`));
+    console.log("");
   }
 
-  if (!fs.existsSync(KB_PATH)) {
-    console.error("❌ knowledge-base.json não encontrado.");
-    process.exit(1);
+  if (variants?.length) {
+    console.log("🎨 Variants:");
+    variants.forEach(v =>
+      console.log(`- ${v.name}: ${v.values.join(" | ")}`)
+    );
+    console.log("");
   }
 
-  const raw = fs.readFileSync(KB_PATH, "utf-8");
-  const knowledgeBase: KnowledgeBaseItem[] = JSON.parse(raw);
+  if (useWhen) console.log(`✅ Use quando:\n- ${useWhen}\n`);
+  if (avoidWhen) console.log(`⛔ Evite quando:\n- ${avoidWhen}\n`);
+  if (exampleUsage) console.log(`💡 Exemplo:\n${exampleUsage}\n`);
+}
 
-  const component = knowledgeBase.find(
-    (item) =>
-      item.componentName.toLowerCase() === componentName.toLowerCase()
+function main() {
+  const args = process.argv.slice(2);
+  const kb = loadKnowledgeBase();
+
+  // 👉 SEM ARGUMENTOS
+  if (args.length === 0) {
+    listComponents(kb);
+    return;
+  }
+
+  const command = args[0].toLowerCase();
+
+  // 👉 COMANDO LIST
+  if (command === "list") {
+    listComponents(kb);
+    return;
+  }
+
+  // 👉 BUSCA COMPONENTE
+  const component = kb.find(
+    c => c.componentName.toLowerCase() === command
   );
 
   if (!component) {
-    console.error(`❌ Componente "${componentName}" não encontrado.`);
-    process.exit(1);
+    console.error(`❌ Componente "${args[0]}" não encontrado.`);
+    return;
   }
 
-  printComponent(component);
+  showComponent(component);
 }
 
-run();
+main();
