@@ -1,0 +1,200 @@
+[
+  {
+    "fileName": "BrandManualWidget.tsx",
+    "contentHash": "de091822531dbeb7ce5ab8de88e729c80574186f19dce62101069f149b1276cd",
+    "item": {
+      "componentName": "BrandManualWidget",
+      "analysis": {
+        "props": [],
+        "variants": [],
+        "useWhen": "Quando esse componente representar bem o padrao visual e funcional necessario.",
+        "avoidWhen": "Quando um elemento HTML nativo atender melhor com menor complexidade.",
+        "exampleUsage": "<BrandManualWidget />"
+      }
+    }
+  },
+  {
+    "fileName": "button.tsx",
+    "contentHash": "cc2575b800bdd16e7c18ac20e086db9f855e2e0eab39b8db8f0b9dfc5135c0c6",
+    "item": {
+      "componentName": "Button",
+      "analysis": {
+        "props": [
+          {
+            "name": "className",
+            "type": "unknown",
+            "description": "Prop className"
+          },
+          {
+            "name": "variant",
+            "type": "unknown",
+            "description": "Prop variant"
+          },
+          {
+            "name": "size",
+            "type": "unknown",
+            "description": "Prop size"
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "description": "Prop asChild"
+          }
+        ],
+        "variants": [
+          {
+            "name": "variant",
+            "values": [
+              "default",
+              "primary",
+              "outline",
+              "link",
+              "ghost"
+            ]
+          },
+          {
+            "name": "size",
+            "values": [
+              "default",
+              "sm",
+              "md",
+              "lg",
+              "icon",
+              "icon-sm",
+              "icon-lg"
+            ]
+          }
+        ],
+        "useWhen": "Quando precisar de uma acao principal ou secundaria com clique.",
+        "avoidWhen": "Quando for apenas navegacao sem acao; prefira um link.",
+        "exampleUsage": "<Button variant=\"default\" size=\"default\">Conteudo</Button>"
+      }
+    }
+  },
+  {
+    "fileName": "Filter.tsx",
+    "contentHash": "f0583aed4897bc0a0393befe7b2a84b5d547f073f8c5e65521f83ccb96a13ac0",
+    "item": {
+      "componentName": "AppFilter",
+      "analysis": {
+        "props": [],
+        "variants": [],
+        "useWhen": "Quando esse componente representar bem o padrao visual e funcional necessario.",
+        "avoidWhen": "Quando um elemento HTML nativo atender melhor com menor complexidade.",
+        "exampleUsage": "<AppFilter />"
+      }
+    }
+  },
+  {
+    "fileName": "HomeCard.tsx",
+    "contentHash": "b11021743733b4ac305268ab65a2fc2d0a8ed52a04823bb0870e5b4ec451ee9d",
+    "item": {
+      "componentName": "HomeCard",
+      "analysis": {
+        "props": [],
+        "variants": [],
+        "useWhen": "Quando precisar agrupar conteudo relacionado em um bloco visual.",
+        "avoidWhen": "Quando a informacao for simples e nao exigir agrupamento.",
+        "exampleUsage": "<HomeCard />"
+      }
+    }
+  },
+  {
+    "fileName": "LanguageSelector.tsx",
+    "contentHash": "8d027162961983e6a4ff211a6eed9b1ee05ee43a942504d611123ec49abfa649",
+    "item": {
+      "componentName": "LanguageSelector",
+      "analysis": {
+        "props": [],
+        "variants": [],
+        "useWhen": "Quando esse componente representar bem o padrao visual e funcional necessario.",
+        "avoidWhen": "Quando um elemento HTML nativo atender melhor com menor complexidade.",
+        "exampleUsage": "<LanguageSelector />"
+      }
+    }
+  },
+  {
+    "fileName": "LatestVideosWidget.tsx",
+    "contentHash": "8d0085a83d02d17918d838be70c7a2b313f6e1af288f699a4951970d23bfc23c",
+    "item": {
+      "componentName": "LatestVideosWidget",
+      "analysis": {
+        "props": [],
+        "variants": [],
+        "useWhen": "Quando esse componente representar bem o padrao visual e funcional necessario.",
+        "avoidWhen": "Quando um elemento HTML nativo atender melhor com menor complexidade.",
+        "exampleUsage": "<LatestVideosWidget />"
+      }
+    }
+  },
+  {
+    "fileName": "QRGeneratorWidget.tsx",
+    "contentHash": "5f8df9b214e011adb113af031bea1c591173166b1ac2fc1b94542704c1f14f04",
+    "item": {
+      "componentName": "QRGeneratorWidget",
+      "analysis": {
+        "props": [],
+        "variants": [],
+        "useWhen": "Quando esse componente representar bem o padrao visual e funcional necessario.",
+        "avoidWhen": "Quando um elemento HTML nativo atender melhor com menor complexidade.",
+        "exampleUsage": "<QRGeneratorWidget />"
+      }
+    }
+  },
+  {
+    "fileName": "Sidebar.tsx",
+    "contentHash": "8a7f59e0bb833fc5dc4a824e84348a202e8d3266073325367bfa7c316b44b092",
+    "item": {
+      "componentName": "Sidebar",
+      "analysis": {
+        "props": [],
+        "variants": [],
+        "useWhen": "Quando compor estrutura de navegacao da interface.",
+        "avoidWhen": "Quando o fluxo nao exigir navegacao persistente.",
+        "exampleUsage": "<Sidebar />"
+      }
+    }
+  },
+  {
+    "fileName": "Topbar.tsx",
+    "contentHash": "9337d2d026b168a37f003910e9f81f5ebb75cc60405699768dfa3a66aef46a5c",
+    "item": {
+      "componentName": "Topbar",
+      "analysis": {
+        "props": [],
+        "variants": [],
+        "useWhen": "Quando compor estrutura de navegacao da interface.",
+        "avoidWhen": "Quando o fluxo nao exigir navegacao persistente.",
+        "exampleUsage": "<Topbar />"
+      }
+    }
+  },
+  {
+    "fileName": "UserDropdown.tsx",
+    "contentHash": "08f60ec740d0924733e4b913327493210d6d906335550b86a8c6951a40c9c2f8",
+    "item": {
+      "componentName": "UserDropdown",
+      "analysis": {
+        "props": [],
+        "variants": [],
+        "useWhen": "Quando esse componente representar bem o padrao visual e funcional necessario.",
+        "avoidWhen": "Quando um elemento HTML nativo atender melhor com menor complexidade.",
+        "exampleUsage": "<UserDropdown />"
+      }
+    }
+  },
+  {
+    "fileName": "VideoCardWidget.tsx",
+    "contentHash": "c278157ed08a554640fb8263faa97fbb595b6bb6ddb2dff8375fa47476061e99",
+    "item": {
+      "componentName": "VideoCardWidget",
+      "analysis": {
+        "props": [],
+        "variants": [],
+        "useWhen": "Quando precisar agrupar conteudo relacionado em um bloco visual.",
+        "avoidWhen": "Quando a informacao for simples e nao exigir agrupamento.",
+        "exampleUsage": "<VideoCardWidget />"
+      }
+    }
+  }
+]

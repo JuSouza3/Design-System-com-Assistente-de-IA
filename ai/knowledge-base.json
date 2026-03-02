@@ -1,27 +1,47 @@
 [
   {
-    "componentName": "button",
+    "componentName": "AppFilter",
+    "analysis": {
+      "props": [],
+      "variants": [],
+      "useWhen": "Quando esse componente representar bem o padrao visual e funcional necessario.",
+      "avoidWhen": "Quando um elemento HTML nativo atender melhor com menor complexidade.",
+      "exampleUsage": "<AppFilter />"
+    }
+  },
+  {
+    "componentName": "BrandManualWidget",
+    "analysis": {
+      "props": [],
+      "variants": [],
+      "useWhen": "Quando esse componente representar bem o padrao visual e funcional necessario.",
+      "avoidWhen": "Quando um elemento HTML nativo atender melhor com menor complexidade.",
+      "exampleUsage": "<BrandManualWidget />"
+    }
+  },
+  {
+    "componentName": "Button",
     "analysis": {
       "props": [
         {
           "name": "className",
-          "type": "string",
-          "description": "string"
+          "type": "unknown",
+          "description": "Prop className"
         },
         {
           "name": "variant",
-          "type": "string",
-          "description": "string"
+          "type": "unknown",
+          "description": "Prop variant"
         },
         {
           "name": "size",
-          "type": "string",
-          "description": "string"
+          "type": "unknown",
+          "description": "Prop size"
         },
         {
           "name": "asChild",
           "type": "boolean",
-          "description": "boolean"
+          "description": "Prop asChild"
         }
       ],
       "variants": [
@@ -48,9 +68,89 @@
           ]
         }
       ],
-      "useWhen": "Quando um botão é necessário",
-      "avoidWhen": "Não usar quando um link é suficiente",
-      "exampleUsage": "<Button variant='primary' size='lg'>Botão primário</Button>"
+      "useWhen": "Quando precisar de uma acao principal ou secundaria com clique.",
+      "avoidWhen": "Quando for apenas navegacao sem acao; prefira um link.",
+      "exampleUsage": "<Button variant=\"default\" size=\"default\">Conteudo</Button>"
+    }
+  },
+  {
+    "componentName": "HomeCard",
+    "analysis": {
+      "props": [],
+      "variants": [],
+      "useWhen": "Quando precisar agrupar conteudo relacionado em um bloco visual.",
+      "avoidWhen": "Quando a informacao for simples e nao exigir agrupamento.",
+      "exampleUsage": "<HomeCard />"
+    }
+  },
+  {
+    "componentName": "LanguageSelector",
+    "analysis": {
+      "props": [],
+      "variants": [],
+      "useWhen": "Quando esse componente representar bem o padrao visual e funcional necessario.",
+      "avoidWhen": "Quando um elemento HTML nativo atender melhor com menor complexidade.",
+      "exampleUsage": "<LanguageSelector />"
+    }
+  },
+  {
+    "componentName": "LatestVideosWidget",
+    "analysis": {
+      "props": [],
+      "variants": [],
+      "useWhen": "Quando esse componente representar bem o padrao visual e funcional necessario.",
+      "avoidWhen": "Quando um elemento HTML nativo atender melhor com menor complexidade.",
+      "exampleUsage": "<LatestVideosWidget />"
+    }
+  },
+  {
+    "componentName": "QRGeneratorWidget",
+    "analysis": {
+      "props": [],
+      "variants": [],
+      "useWhen": "Quando esse componente representar bem o padrao visual e funcional necessario.",
+      "avoidWhen": "Quando um elemento HTML nativo atender melhor com menor complexidade.",
+      "exampleUsage": "<QRGeneratorWidget />"
+    }
+  },
+  {
+    "componentName": "Sidebar",
+    "analysis": {
+      "props": [],
+      "variants": [],
+      "useWhen": "Quando compor estrutura de navegacao da interface.",
+      "avoidWhen": "Quando o fluxo nao exigir navegacao persistente.",
+      "exampleUsage": "<Sidebar />"
+    }
+  },
+  {
+    "componentName": "Topbar",
+    "analysis": {
+      "props": [],
+      "variants": [],
+      "useWhen": "Quando compor estrutura de navegacao da interface.",
+      "avoidWhen": "Quando o fluxo nao exigir navegacao persistente.",
+      "exampleUsage": "<Topbar />"
+    }
+  },
+  {
+    "componentName": "UserDropdown",
+    "analysis": {
+      "props": [],
+      "variants": [],
+      "useWhen": "Quando esse componente representar bem o padrao visual e funcional necessario.",
+      "avoidWhen": "Quando um elemento HTML nativo atender melhor com menor complexidade.",
+      "exampleUsage": "<UserDropdown />"
+    }
+  },
+  {
+    "componentName": "VideoCardWidget",
+    "analysis": {
+      "props": [],
+      "variants": [],
+      "useWhen": "Quando precisar agrupar conteudo relacionado em um bloco visual.",
+      "avoidWhen": "Quando a informacao for simples e nao exigir agrupamento.",
+      "exampleUsage": "<VideoCardWidget />"
     }
   }
 ]
