@@ -1,8 +1,10 @@
 import "dotenv/config";
 import * as fs from "fs";
-import * as path from "path";
 import { callLLM } from "./llm";
 import { generateKnowledgeBase } from "./analyzeComponents";
+import { ensureDefaultConfigFile } from "./config";
+import { generateMarkdownDocumentation } from "./generateDocs";
+import { getKnowledgeBasePath } from "./workspacePaths";
 import {
   buildHelpContext,
   findComponentExact,
@@ -11,7 +13,7 @@ import {
   suggestComponents,
 } from "./services/designSystemService";
 
-const KB_PATH = path.resolve(__dirname, "./knowledge-base.json");
+const KB_PATH = getKnowledgeBasePath();
 
 function loadKnowledgeBase(): KnowledgeBaseItem[] {
   if (!fs.existsSync(KB_PATH)) {
@@ -140,6 +142,17 @@ async function main() {
     return;
   }
 
+  // 👉 INIT-CONFIG
+  if (command === "init-config") {
+    ensureDefaultConfigFile();
+    if (jsonOutput) {
+      console.log(JSON.stringify({ ok: true, config: ".design-assistant.json" }, null, 2));
+    } else {
+      console.log("✅ Arquivo .design-assistant.json criado (ou já existente).");
+    }
+    return;
+  }
+
   const kb = loadKnowledgeBase();
 
   // 👉 LIST
@@ -174,6 +187,24 @@ async function main() {
     matches.forEach((match) => {
       console.log(`${match.componentName} possui prop: ${match.matchingProps.join(", ")}`);
     });
+    return;
+  }
+
+  // 👉 DOCS
+  if (command === "docs") {
+    const freshKb = generateKnowledgeBase() as KnowledgeBaseItem[];
+    const outputPath = generateMarkdownDocumentation(freshKb);
+    if (jsonOutput) {
+      console.log(
+        JSON.stringify(
+          { ok: true, docsPath: outputPath, components: freshKb.length },
+          null,
+          2
+        )
+      );
+    } else {
+      console.log(`✅ Documentação gerada em: ${outputPath}`);
+    }
     return;
   }
 

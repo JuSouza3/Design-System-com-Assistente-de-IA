@@ -1,5 +1,6 @@
 export type KnowledgeBaseItem = {
   componentName: string;
+  sourcePath?: string;
   analysis: {
     props?: { name: string; type: string; description?: string }[];
     variants?: { name: string; values: string[] }[];
