@@ -1,14 +1,61 @@
 {
   "name": "pdi",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Design Assistant CLI + VS Code extension",
+  "main": "./out/extension.js",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:ai": "tsc -p tsconfig.ai.json",
+    "build:extension": "tsc -p tsconfig.extension.json",
+    "build": "npm run build:ai && npm run build:extension",
+    "watch:extension": "tsc -p tsconfig.extension.json --watch",
+    "test": "echo \"No tests configured\""
   },
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "activationEvents": [
+    "onCommand:designAssistant.refresh",
+    "onCommand:designAssistant.generateDocs",
+    "onCommand:designAssistant.askQuestion",
+    "onCommand:designAssistant.searchProp",
+    "onCommand:designAssistant.openKnowledgeBase"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "designAssistant.refresh",
+        "title": "Design Assistant: Refresh Knowledge Base"
+      },
+      {
+        "command": "designAssistant.generateDocs",
+        "title": "Design Assistant: Generate Documentation"
+      },
+      {
+        "command": "designAssistant.askQuestion",
+        "title": "Design Assistant: Ask Question"
+      },
+      {
+        "command": "designAssistant.searchProp",
+        "title": "Design Assistant: Search Prop"
+      },
+      {
+        "command": "designAssistant.openKnowledgeBase",
+        "title": "Design Assistant: Open Knowledge Base"
+      }
+    ]
+  },
+  "files": [
+    "out/**",
+    "dist-ai/**",
+    "ai/**",
+    "docs/**",
+    ".design-assistant.json",
+    "README.md",
+    "package.json"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -18,8 +65,10 @@
     "@types/node": "^25.0.9",
     "@types/react": "^19.2.9",
     "@types/react-dom": "^19.2.3",
+    "@types/vscode": "^1.109.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vscode": "^1.1.37"
   },
   "dependencies": {
     "@radix-ui/react-alert-dialog": "^1.1.15",
