@@ -1,11 +1,18 @@
 [
   {
-    "fileName": "BrandManualWidget.tsx",
+    "relativePath": "sample-project/components/BrandManualWidget.tsx",
     "contentHash": "de091822531dbeb7ce5ab8de88e729c80574186f19dce62101069f149b1276cd",
     "item": {
       "componentName": "BrandManualWidget",
+      "sourcePath": "sample-project/components/BrandManualWidget.tsx",
       "analysis": {
-        "props": [],
+        "props": [
+          {
+            "name": "onClick",
+            "type": "() => void",
+            "description": "Prop onClick"
+          }
+        ],
         "variants": [],
         "useWhen": "Quando esse componente representar bem o padrao visual e funcional necessario.",
         "avoidWhen": "Quando um elemento HTML nativo atender melhor com menor complexidade.",
@@ -14,10 +21,11 @@
     }
   },
   {
-    "fileName": "button.tsx",
+    "relativePath": "sample-project/components/button.tsx",
     "contentHash": "cc2575b800bdd16e7c18ac20e086db9f855e2e0eab39b8db8f0b9dfc5135c0c6",
     "item": {
       "componentName": "Button",
+      "sourcePath": "sample-project/components/button.tsx",
       "analysis": {
         "props": [
           {
@@ -72,10 +80,11 @@
     }
   },
   {
-    "fileName": "Filter.tsx",
+    "relativePath": "sample-project/components/Filter.tsx",
     "contentHash": "f0583aed4897bc0a0393befe7b2a84b5d547f073f8c5e65521f83ccb96a13ac0",
     "item": {
       "componentName": "AppFilter",
+      "sourcePath": "sample-project/components/Filter.tsx",
       "analysis": {
         "props": [],
         "variants": [],
@@ -86,12 +95,39 @@
     }
   },
   {
-    "fileName": "HomeCard.tsx",
+    "relativePath": "sample-project/components/HomeCard.tsx",
     "contentHash": "b11021743733b4ac305268ab65a2fc2d0a8ed52a04823bb0870e5b4ec451ee9d",
     "item": {
       "componentName": "HomeCard",
+      "sourcePath": "sample-project/components/HomeCard.tsx",
       "analysis": {
-        "props": [],
+        "props": [
+          {
+            "name": "title",
+            "type": "string",
+            "description": "Prop title"
+          },
+          {
+            "name": "subtitle",
+            "type": "string",
+            "description": "Prop subtitle"
+          },
+          {
+            "name": "buttonText",
+            "type": "string",
+            "description": "Prop buttonText"
+          },
+          {
+            "name": "onButtonClick",
+            "type": "() => void",
+            "description": "Prop onButtonClick"
+          },
+          {
+            "name": "children",
+            "type": "ReactNode",
+            "description": "Prop children"
+          }
+        ],
         "variants": [],
         "useWhen": "Quando precisar agrupar conteudo relacionado em um bloco visual.",
         "avoidWhen": "Quando a informacao for simples e nao exigir agrupamento.",
@@ -100,10 +136,11 @@
     }
   },
   {
-    "fileName": "LanguageSelector.tsx",
+    "relativePath": "sample-project/components/LanguageSelector.tsx",
     "contentHash": "8d027162961983e6a4ff211a6eed9b1ee05ee43a942504d611123ec49abfa649",
     "item": {
       "componentName": "LanguageSelector",
+      "sourcePath": "sample-project/components/LanguageSelector.tsx",
       "analysis": {
         "props": [],
         "variants": [],
@@ -114,12 +151,19 @@
     }
   },
   {
-    "fileName": "LatestVideosWidget.tsx",
+    "relativePath": "sample-project/components/LatestVideosWidget.tsx",
     "contentHash": "8d0085a83d02d17918d838be70c7a2b313f6e1af288f699a4951970d23bfc23c",
     "item": {
       "componentName": "LatestVideosWidget",
+      "sourcePath": "sample-project/components/LatestVideosWidget.tsx",
       "analysis": {
-        "props": [],
+        "props": [
+          {
+            "name": "count",
+            "type": "number",
+            "description": "Prop count"
+          }
+        ],
         "variants": [],
         "useWhen": "Quando esse componente representar bem o padrao visual e funcional necessario.",
         "avoidWhen": "Quando um elemento HTML nativo atender melhor com menor complexidade.",
@@ -128,12 +172,24 @@
     }
   },
   {
-    "fileName": "QRGeneratorWidget.tsx",
+    "relativePath": "sample-project/components/QRGeneratorWidget.tsx",
     "contentHash": "5f8df9b214e011adb113af031bea1c591173166b1ac2fc1b94542704c1f14f04",
     "item": {
       "componentName": "QRGeneratorWidget",
+      "sourcePath": "sample-project/components/QRGeneratorWidget.tsx",
       "analysis": {
-        "props": [],
+        "props": [
+          {
+            "name": "onGoToTool",
+            "type": "() => void",
+            "description": "Prop onGoToTool"
+          },
+          {
+            "name": "variant",
+            "type": "\"default\" | \"widgetMini\"",
+            "description": "Prop variant"
+          }
+        ],
         "variants": [],
         "useWhen": "Quando esse componente representar bem o padrao visual e funcional necessario.",
         "avoidWhen": "Quando um elemento HTML nativo atender melhor com menor complexidade.",
@@ -142,10 +198,11 @@
     }
   },
   {
-    "fileName": "Sidebar.tsx",
+    "relativePath": "sample-project/components/Sidebar.tsx",
     "contentHash": "8a7f59e0bb833fc5dc4a824e84348a202e8d3266073325367bfa7c316b44b092",
     "item": {
       "componentName": "Sidebar",
+      "sourcePath": "sample-project/components/Sidebar.tsx",
       "analysis": {
         "props": [],
         "variants": [],
@@ -156,10 +213,11 @@
     }
   },
   {
-    "fileName": "Topbar.tsx",
+    "relativePath": "sample-project/components/Topbar.tsx",
     "contentHash": "9337d2d026b168a37f003910e9f81f5ebb75cc60405699768dfa3a66aef46a5c",
     "item": {
       "componentName": "Topbar",
+      "sourcePath": "sample-project/components/Topbar.tsx",
       "analysis": {
         "props": [],
         "variants": [],
@@ -170,10 +228,11 @@
     }
   },
   {
-    "fileName": "UserDropdown.tsx",
+    "relativePath": "sample-project/components/UserDropdown.tsx",
     "contentHash": "08f60ec740d0924733e4b913327493210d6d906335550b86a8c6951a40c9c2f8",
     "item": {
       "componentName": "UserDropdown",
+      "sourcePath": "sample-project/components/UserDropdown.tsx",
       "analysis": {
         "props": [],
         "variants": [],
@@ -184,12 +243,19 @@
     }
   },
   {
-    "fileName": "VideoCardWidget.tsx",
+    "relativePath": "sample-project/components/VideoCardWidget.tsx",
     "contentHash": "c278157ed08a554640fb8263faa97fbb595b6bb6ddb2dff8375fa47476061e99",
     "item": {
       "componentName": "VideoCardWidget",
+      "sourcePath": "sample-project/components/VideoCardWidget.tsx",
       "analysis": {
-        "props": [],
+        "props": [
+          {
+            "name": "video",
+            "type": "Video",
+            "description": "Prop video"
+          }
+        ],
         "variants": [],
         "useWhen": "Quando precisar agrupar conteudo relacionado em um bloco visual.",
         "avoidWhen": "Quando a informacao for simples e nao exigir agrupamento.",

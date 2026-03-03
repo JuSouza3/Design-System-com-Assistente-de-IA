@@ -1,6 +1,7 @@
 [
   {
     "componentName": "AppFilter",
+    "sourcePath": "sample-project/components/Filter.tsx",
     "analysis": {
       "props": [],
       "variants": [],
@@ -11,8 +12,15 @@
   },
   {
     "componentName": "BrandManualWidget",
+    "sourcePath": "sample-project/components/BrandManualWidget.tsx",
     "analysis": {
-      "props": [],
+      "props": [
+        {
+          "name": "onClick",
+          "type": "() => void",
+          "description": "Prop onClick"
+        }
+      ],
       "variants": [],
       "useWhen": "Quando esse componente representar bem o padrao visual e funcional necessario.",
       "avoidWhen": "Quando um elemento HTML nativo atender melhor com menor complexidade.",
@@ -21,6 +29,7 @@
   },
   {
     "componentName": "Button",
+    "sourcePath": "sample-project/components/button.tsx",
     "analysis": {
       "props": [
         {
@@ -75,8 +84,35 @@
   },
   {
     "componentName": "HomeCard",
+    "sourcePath": "sample-project/components/HomeCard.tsx",
     "analysis": {
-      "props": [],
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "description": "Prop title"
+        },
+        {
+          "name": "subtitle",
+          "type": "string",
+          "description": "Prop subtitle"
+        },
+        {
+          "name": "buttonText",
+          "type": "string",
+          "description": "Prop buttonText"
+        },
+        {
+          "name": "onButtonClick",
+          "type": "() => void",
+          "description": "Prop onButtonClick"
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "description": "Prop children"
+        }
+      ],
       "variants": [],
       "useWhen": "Quando precisar agrupar conteudo relacionado em um bloco visual.",
       "avoidWhen": "Quando a informacao for simples e nao exigir agrupamento.",
@@ -85,6 +121,7 @@
   },
   {
     "componentName": "LanguageSelector",
+    "sourcePath": "sample-project/components/LanguageSelector.tsx",
     "analysis": {
       "props": [],
       "variants": [],
@@ -95,8 +132,15 @@
   },
   {
     "componentName": "LatestVideosWidget",
+    "sourcePath": "sample-project/components/LatestVideosWidget.tsx",
     "analysis": {
-      "props": [],
+      "props": [
+        {
+          "name": "count",
+          "type": "number",
+          "description": "Prop count"
+        }
+      ],
       "variants": [],
       "useWhen": "Quando esse componente representar bem o padrao visual e funcional necessario.",
       "avoidWhen": "Quando um elemento HTML nativo atender melhor com menor complexidade.",
@@ -105,8 +149,20 @@
   },
   {
     "componentName": "QRGeneratorWidget",
+    "sourcePath": "sample-project/components/QRGeneratorWidget.tsx",
     "analysis": {
-      "props": [],
+      "props": [
+        {
+          "name": "onGoToTool",
+          "type": "() => void",
+          "description": "Prop onGoToTool"
+        },
+        {
+          "name": "variant",
+          "type": "\"default\" | \"widgetMini\"",
+          "description": "Prop variant"
+        }
+      ],
       "variants": [],
       "useWhen": "Quando esse componente representar bem o padrao visual e funcional necessario.",
       "avoidWhen": "Quando um elemento HTML nativo atender melhor com menor complexidade.",
@@ -115,6 +171,7 @@
   },
   {
     "componentName": "Sidebar",
+    "sourcePath": "sample-project/components/Sidebar.tsx",
     "analysis": {
       "props": [],
       "variants": [],
@@ -125,6 +182,7 @@
   },
   {
     "componentName": "Topbar",
+    "sourcePath": "sample-project/components/Topbar.tsx",
     "analysis": {
       "props": [],
       "variants": [],
@@ -135,6 +193,7 @@
   },
   {
     "componentName": "UserDropdown",
+    "sourcePath": "sample-project/components/UserDropdown.tsx",
     "analysis": {
       "props": [],
       "variants": [],
@@ -145,8 +204,15 @@
   },
   {
     "componentName": "VideoCardWidget",
+    "sourcePath": "sample-project/components/VideoCardWidget.tsx",
     "analysis": {
-      "props": [],
+      "props": [
+        {
+          "name": "video",
+          "type": "Video",
+          "description": "Prop video"
+        }
+      ],
       "variants": [],
       "useWhen": "Quando precisar agrupar conteudo relacionado em um bloco visual.",
       "avoidWhen": "Quando a informacao for simples e nao exigir agrupamento.",
