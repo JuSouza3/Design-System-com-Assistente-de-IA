@@ -3,6 +3,8 @@
 Gerar ou atualizar a base de conhecimento:
 `npx ts-node ai/analyzeComponents.ts`
 Observacao: a analise agora e incremental por hash (so reanalisa componentes alterados).
+Observacao: a analise agora usa AST do TypeScript (mais precisa para props/variants).
+Observacao: os artefatos ficam em `.design-assistant/` no workspace analisado.
 
 Atualizar a base direto pela CLI:
 `npx ts-node ai/cli.ts refresh`
@@ -27,3 +29,52 @@ Buscar componentes por prop:
 
 Buscar por prop em JSON:
 `npx ts-node ai/cli.ts search variant --json`
+
+Gerar documentacao automatica em Markdown:
+`npx ts-node ai/cli.ts docs`
+
+Gerar documentacao e retornar metadados em JSON:
+`npx ts-node ai/cli.ts docs --json`
+
+Criar arquivo de configuracao padrao:
+`npx ts-node ai/cli.ts init-config`
+
+# Configuracao para qualquer projeto
+
+Arquivo `.design-assistant.json`:
+
+```json
+{
+  "include": ["src/components", "components", "ui"],
+  "extensions": [".tsx", ".jsx", ".ts", ".js"],
+  "exclude": ["node_modules", ".git", "dist", "build", ".next"],
+  "docsOutputPath": "docs/design-system.generated.md"
+}
+```
+
+Com isso, o analisador pode funcionar em estruturas diferentes de projeto.
+
+# Estrutura de saída no workspace
+
+- `.design-assistant/knowledge-base.json`
+- `.design-assistant/analysis-cache.json`
+- `docs/design-system.generated.md` (ou caminho configurado)
+
+# Plugin VS Code (base)
+
+Comandos disponíveis na Command Palette:
+
+- `Design Assistant: Refresh Knowledge Base`
+- `Design Assistant: Generate Documentation`
+- `Design Assistant: Ask Question`
+- `Design Assistant: Search Prop`
+- `Design Assistant: Open Knowledge Base`
+
+## Rodar em desenvolvimento
+
+1. Build:
+`npm run build`
+
+2. Abrir este projeto no VS Code e pressionar `F5` para iniciar a Extension Development Host.
+
+3. No novo VS Code, abra um workspace alvo e rode os comandos acima.

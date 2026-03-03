@@ -1,3 +1,6 @@
 node
 node_modules
 .env
+out
+dist-ai
+.design-assistant
