@@ -48,11 +48,14 @@ Arquivo `.design-assistant.json`:
   "include": ["src/components", "components", "ui"],
   "extensions": [".tsx", ".jsx", ".ts", ".js"],
   "exclude": ["node_modules", ".git", "dist", "build", ".next"],
-  "docsOutputPath": "docs/design-system.generated.md"
+  "docsOutputPath": "docs/design-system.generated.md",
+  "autoDiscovery": true
 }
 ```
 
 Com isso, o analisador pode funcionar em estruturas diferentes de projeto.
+Com `autoDiscovery: true`, ele tambem tenta detectar automaticamente pastas como
+`frontend/src/components`, `app/components`, `components` e `ui`.
 
 # Estrutura de saída no workspace
 

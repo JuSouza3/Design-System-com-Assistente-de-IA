@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
+import { discoverIncludePaths } from "./discoverStructure";
 import { getWorkspaceRoot } from "./workspacePaths";
 
 export type DesignAssistantConfig = {
@@ -7,6 +8,7 @@ export type DesignAssistantConfig = {
   extensions: string[];
   exclude: string[];
   docsOutputPath: string;
+  autoDiscovery?: boolean;
 };
 
 const DEFAULT_CONFIG: DesignAssistantConfig = {
@@ -29,6 +31,7 @@ const DEFAULT_CONFIG: DesignAssistantConfig = {
     ".cache",
   ],
   docsOutputPath: "docs/design-system.generated.md",
+  autoDiscovery: true,
 };
 
 function getConfigPath(): string {
@@ -37,32 +40,59 @@ function getConfigPath(): string {
 
 export function loadDesignAssistantConfig(): DesignAssistantConfig {
   const CONFIG_PATH = getConfigPath();
+  const workspaceRoot = getWorkspaceRoot();
   if (!fs.existsSync(CONFIG_PATH)) {
-    return DEFAULT_CONFIG;
+    const discovered = discoverIncludePaths(
+      workspaceRoot,
+      DEFAULT_CONFIG.exclude,
+      DEFAULT_CONFIG.extensions
+    );
+    return {
+      ...DEFAULT_CONFIG,
+      include: [...new Set([...DEFAULT_CONFIG.include, ...discovered])],
+    };
   }
 
   try {
     const raw = fs.readFileSync(CONFIG_PATH, "utf-8");
     const parsed = JSON.parse(raw) as Partial<DesignAssistantConfig>;
+    const extensions =
+      parsed.extensions && parsed.extensions.length > 0
+        ? parsed.extensions
+        : DEFAULT_CONFIG.extensions;
+    const exclude =
+      parsed.exclude && parsed.exclude.length > 0
+        ? parsed.exclude
+        : DEFAULT_CONFIG.exclude;
+    const includeBase =
+      parsed.include && parsed.include.length > 0
+        ? parsed.include
+        : DEFAULT_CONFIG.include;
+    const autoDiscovery =
+      typeof parsed.autoDiscovery === "boolean"
+        ? parsed.autoDiscovery
+        : true;
+    const discovered = autoDiscovery
+      ? discoverIncludePaths(workspaceRoot, exclude, extensions)
+      : [];
 
     return {
-      include:
-        parsed.include && parsed.include.length > 0
-          ? parsed.include
-          : DEFAULT_CONFIG.include,
-      extensions:
-        parsed.extensions && parsed.extensions.length > 0
-          ? parsed.extensions
-          : DEFAULT_CONFIG.extensions,
-      exclude:
-        parsed.exclude && parsed.exclude.length > 0
-          ? parsed.exclude
-          : DEFAULT_CONFIG.exclude,
-      docsOutputPath:
-        parsed.docsOutputPath || DEFAULT_CONFIG.docsOutputPath,
+      include: [...new Set([...includeBase, ...discovered])],
+      extensions,
+      exclude,
+      docsOutputPath: parsed.docsOutputPath || DEFAULT_CONFIG.docsOutputPath,
+      autoDiscovery,
     };
   } catch {
-    return DEFAULT_CONFIG;
+    const discovered = discoverIncludePaths(
+      workspaceRoot,
+      DEFAULT_CONFIG.exclude,
+      DEFAULT_CONFIG.extensions
+    );
+    return {
+      ...DEFAULT_CONFIG,
+      include: [...new Set([...DEFAULT_CONFIG.include, ...discovered])],
+    };
   }
 }
 

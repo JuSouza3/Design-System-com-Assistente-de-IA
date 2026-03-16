@@ -22,5 +22,6 @@
     ".turbo",
     ".cache"
   ],
-  "docsOutputPath": "docs/design-system.generated.md"
+  "docsOutputPath": "docs/design-system.generated.md",
+  "autoDiscovery": true
 }
