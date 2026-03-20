@@ -17,7 +17,6 @@ const DEFAULT_CONFIG: DesignAssistantConfig = {
     "src/ui",
     "components",
     "ui",
-    "sample-project/components",
   ],
   extensions: [".tsx", ".jsx", ".ts", ".js"],
   exclude: [

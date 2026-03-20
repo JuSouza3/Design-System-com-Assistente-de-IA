@@ -4,6 +4,11 @@ export type KnowledgeBaseItem = {
   analysis: {
     props?: { name: string; type: string; description?: string }[];
     variants?: { name: string; values: string[] }[];
+    detectedLibraries?: {
+      name: string;
+      confidence: "low" | "medium" | "high";
+      reasons: string[];
+    }[];
     useWhen?: string;
     avoidWhen?: string;
     exampleUsage?: string;

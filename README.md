@@ -1,45 +1,31 @@
-# Comandos
+# Design Assistant
 
-Gerar ou atualizar a base de conhecimento:
-`npx ts-node ai/analyzeComponents.ts`
-Observacao: a analise agora e incremental por hash (so reanalisa componentes alterados).
-Observacao: a analise agora usa AST do TypeScript (mais precisa para props/variants).
-Observacao: os artefatos ficam em `.design-assistant/` no workspace analisado.
+Extensao VS Code e CLI para mapear componentes React/TypeScript de um projeto,
+gerar uma knowledge base local, documentacao Markdown e consultas guiadas sobre
+o design system do workspace aberto.
 
-Atualizar a base direto pela CLI:
-`npx ts-node ai/cli.ts refresh`
+## O que faz hoje
 
-Listar componentes:
-`npx ts-node ai/cli.ts list`
+- Analisa componentes via AST do TypeScript
+- Descobre pastas comuns como `src/components`, `components` e `ui`
+- Mantem cache incremental por hash em `.design-assistant/analysis-cache.json`
+- Gera `.design-assistant/knowledge-base.json`
+- Gera documentacao Markdown em `docs/design-system.generated.md`
+- Permite busca por prop e consulta por componente
+- Oferece uma sidebar no VS Code com acoes e detalhes dos componentes
+- Permite configurar IA no proprio VS Code para perguntas em linguagem natural
 
-Listar componentes em JSON:
-`npx ts-node ai/cli.ts list --json`
+## Como usar no VS Code
 
-Perguntar ao assistente:
-`npx ts-node ai/cli.ts help "qual componente usar para acao principal?"`
+Depois de instalar a extensao:
 
-Ver detalhes de um componente:
-`npx ts-node ai/cli.ts button`
+1. Abra qualquer projeto React/TypeScript no VS Code.
+2. Abra a view `Design Assistant` no Explorer.
+3. Rode `Refresh Knowledge Base`.
+4. Opcionalmente rode `Create Default Config` para gerar `.design-assistant.json`.
+5. Se quiser perguntas em linguagem natural, rode `Configure AI`.
 
-Ver detalhes de um componente em JSON:
-`npx ts-node ai/cli.ts button --json`
-
-Buscar componentes por prop:
-`npx ts-node ai/cli.ts search variant`
-
-Buscar por prop em JSON:
-`npx ts-node ai/cli.ts search variant --json`
-
-Gerar documentacao automatica em Markdown:
-`npx ts-node ai/cli.ts docs`
-
-Gerar documentacao e retornar metadados em JSON:
-`npx ts-node ai/cli.ts docs --json`
-
-Criar arquivo de configuracao padrao:
-`npx ts-node ai/cli.ts init-config`
-
-# Configuracao para qualquer projeto
+## Configuracao do workspace
 
 Arquivo `.design-assistant.json`:
 
@@ -53,31 +39,56 @@ Arquivo `.design-assistant.json`:
 }
 ```
 
-Com isso, o analisador pode funcionar em estruturas diferentes de projeto.
-Com `autoDiscovery: true`, ele tambem tenta detectar automaticamente pastas como
-`frontend/src/components`, `app/components`, `components` e `ui`.
-
-# Estrutura de saída no workspace
+## Estrutura de saida
 
 - `.design-assistant/knowledge-base.json`
 - `.design-assistant/analysis-cache.json`
-- `docs/design-system.generated.md` (ou caminho configurado)
+- `docs/design-system.generated.md`
 
-# Plugin VS Code (base)
+## CLI
 
-Comandos disponíveis na Command Palette:
+Atualizar a base:
+`npx ts-node ai/cli.ts refresh`
 
-- `Design Assistant: Refresh Knowledge Base`
-- `Design Assistant: Generate Documentation`
-- `Design Assistant: Ask Question`
-- `Design Assistant: Search Prop`
-- `Design Assistant: Open Knowledge Base`
+Listar componentes:
+`npx ts-node ai/cli.ts list`
 
-## Rodar em desenvolvimento
+Buscar componentes por prop:
+`npx ts-node ai/cli.ts search variant`
 
-1. Build:
+Gerar documentacao:
+`npx ts-node ai/cli.ts docs`
+
+Perguntar ao assistente:
+`npx ts-node ai/cli.ts help "qual componente usar para acao principal?"`
+
+Criar config padrao:
+`npx ts-node ai/cli.ts init-config`
+
+## Desenvolvimento
+
+Build:
 `npm run build`
 
-2. Abrir este projeto no VS Code e pressionar `F5` para iniciar a Extension Development Host.
+Rodar em modo de extensao:
+1. Abra este projeto no VS Code.
+2. Pressione `F5`.
+3. No novo host de extensao, abra o projeto alvo.
 
-3. No novo VS Code, abra um workspace alvo e rode os comandos acima.
+## Empacotar para instalacao local
+
+Gerar o `.vsix`:
+`npm run package:vsix`
+
+Instalar no VS Code:
+1. Abra `Extensions`.
+2. Clique em `...`
+3. Escolha `Install from VSIX...`
+4. Selecione `design-assistant.vsix`
+
+## Proximos passos recomendados
+
+- adicionar testes automatizados
+- ampliar cobertura do parser AST
+- publicar no Marketplace
+- substituir o `.env` local por fluxo completo de secrets e onboarding

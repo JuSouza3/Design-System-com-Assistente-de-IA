@@ -23,6 +23,17 @@ function variantsList(item: KnowledgeBaseItem): string {
   return variants.map((variant) => `- \`${variant.name}\`: ${variant.values.join(", ")}`).join("\n");
 }
 
+function detectedLibrariesList(item: KnowledgeBaseItem): string {
+  const detectedLibraries = item.analysis.detectedLibraries || [];
+  if (detectedLibraries.length === 0) return "_Nenhuma biblioteca/padrao detectado._";
+  return detectedLibraries
+    .map(
+      (library) =>
+        `- \`${library.name}\` (${library.confidence}): ${library.reasons.join("; ")}`
+    )
+    .join("\n");
+}
+
 function buildMarkdown(kb: KnowledgeBaseItem[]): string {
   const sections = kb.map((item) => {
     return [
@@ -36,6 +47,9 @@ function buildMarkdown(kb: KnowledgeBaseItem[]): string {
       "",
       "### Variants",
       variantsList(item),
+      "",
+      "### Bibliotecas Detectadas",
+      detectedLibrariesList(item),
       "",
       "### Exemplo",
       "```tsx",

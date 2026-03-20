@@ -1,29 +1,49 @@
 {
   "name": "pdi",
+  "displayName": "Design Assistant",
+  "publisher": "julianavieiradesouza",
   "version": "1.0.0",
   "description": "Design Assistant CLI + VS Code extension",
   "main": "./out/extension.js",
   "directories": {
     "doc": "docs"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/julianavieiradesouza/Design-System-com-Assistente-de-IA.git"
+  },
   "scripts": {
     "build:ai": "tsc -p tsconfig.ai.json",
     "build:extension": "tsc -p tsconfig.extension.json",
     "build": "npm run build:ai && npm run build:extension",
+    "package:vsix": "npm run build && vsce package --out design-assistant.vsix",
     "watch:extension": "tsc -p tsconfig.extension.json --watch",
-    "test": "echo \"No tests configured\""
+    "test": "npm run build && node --test test/**/*.test.cjs"
   },
   "engines": {
-    "vscode": "^1.90.0"
+    "vscode": "^1.109.0"
   },
   "activationEvents": [
+    "onView:designAssistant.sidebar",
     "onCommand:designAssistant.refresh",
     "onCommand:designAssistant.generateDocs",
     "onCommand:designAssistant.askQuestion",
     "onCommand:designAssistant.searchProp",
-    "onCommand:designAssistant.openKnowledgeBase"
+    "onCommand:designAssistant.openKnowledgeBase",
+    "onCommand:designAssistant.configureAI",
+    "onCommand:designAssistant.openGeneratedDocs",
+    "onCommand:designAssistant.openComponentSource",
+    "onCommand:designAssistant.initConfig"
   ],
   "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "designAssistant.sidebar",
+          "name": "Design Assistant"
+        }
+      ]
+    },
     "commands": [
       {
         "command": "designAssistant.refresh",
@@ -44,8 +64,43 @@
       {
         "command": "designAssistant.openKnowledgeBase",
         "title": "Design Assistant: Open Knowledge Base"
+      },
+      {
+        "command": "designAssistant.configureAI",
+        "title": "Design Assistant: Configure AI"
+      },
+      {
+        "command": "designAssistant.openGeneratedDocs",
+        "title": "Design Assistant: Open Generated Docs"
+      },
+      {
+        "command": "designAssistant.openComponentSource",
+        "title": "Design Assistant: Open Component Source"
+      },
+      {
+        "command": "designAssistant.initConfig",
+        "title": "Design Assistant: Create Default Config"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Design Assistant",
+      "properties": {
+        "designAssistant.ai.provider": {
+          "type": "string",
+          "enum": [
+            "openrouter",
+            "openai"
+          ],
+          "default": "openrouter",
+          "description": "AI provider used by Design Assistant."
+        },
+        "designAssistant.ai.model": {
+          "type": "string",
+          "default": "",
+          "description": "Optional model override for the selected provider."
+        }
+      }
+    }
   },
   "files": [
     "out/**",
@@ -53,19 +108,25 @@
     "ai/**",
     "docs/**",
     ".design-assistant.json",
+    "LICENSE",
     "README.md",
     "package.json"
   ],
   "keywords": [],
+  "categories": [
+    "Other"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@vscode/vsce": "^3.6.2",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^25.0.9",
     "@types/react": "^19.2.9",
     "@types/react-dom": "^19.2.3",
     "@types/vscode": "^1.109.0",
+    "@vscode/vsce": "^3.7.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3",
     "vscode": "^1.1.37"
